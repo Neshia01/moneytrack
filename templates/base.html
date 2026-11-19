@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}MoneyTrack{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+
+<body>
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <a class="brand" href="{{ url_for('dashboard') }}">
+            <span class="brand-mark">m.</span>
+            <span>
+                moneytrack
+                <small>your finance buddy</small>
+            </span>
+        </a>
+
+        <div class="side-label">MENU</div>
+
+        <nav class="nav-menu">
+
+            <a
+                href="{{ url_for('dashboard') }}"
+                class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}"
+            >
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a
+                href="{{ url_for('transactions') }}"
+                class="nav-link {% if request.endpoint == 'transactions' %}active{% endif %}"
+            >
+                <span class="nav-icon">↕</span>
+                Transactions
+            </a>
+
+            <a
+                href="{{ url_for('add_transaction') }}"
+                class="nav-link {% if request.endpoint in ['add_transaction', 'edit_transaction'] %}active{% endif %}"
+            >
+                <span class="nav-icon">＋</span>
+                Add transaction
+            </a>
+
+            <a href="#" class="nav-link nav-disabled" title="Fitur sedang disiapkan">
+                <span class="nav-icon">◷</span>
+                Budget
+                <span class="soon">soon</span>
+            </a>
+
+            <a href="#" class="nav-link nav-disabled" title="Fitur sedang disiapkan">
+                <span class="nav-icon">♡</span>
+                Debt & receivables
+                <span class="soon">soon</span>
+            </a>
+
+        </nav>
+
+        <!-- SIDEBAR BOTTOM -->
+        <div class="sidebar-bottom">
+
+            <div class="cat-card">
+                <div class="cat-art" aria-hidden="true">
+                    <span class="cat-ear left"></span>
+                    <span class="cat-ear right"></span>
+                    <span class="cat-face">
+                        <i></i>
+                        <b></b>
+                        <em></em>
+                    </span>
+                </div>
+
+                <strong>Little steps,</strong>
+                <strong>big savings!</strong>
+                <p>Keep your money goals close.</p>
+            </div>
+
+            <div class="sidebar-foot">
+                made with ♡ for your better days
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-area">
+
+        <header class="topbar">
+            <div>
+                <div class="topbar-kicker">
+                    YOUR PERSONAL FINANCE SPACE
+                </div>
+
+                <h1>
+                    {% block heading %}Hello there!{% endblock %}
+                </h1>
+            </div>
+
+            <a class="top-add" href="{{ url_for('add_transaction') }}">
+                <span>＋</span>
+                New transaction
+            </a>
+        </header>
+
+        <!-- FLASH MESSAGES -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-container">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- PAGE CONTENT -->
+        <section class="page-content">
+            {% block content %}{% endblock %}
+        </section>
+
+        <footer class="page-footer">
+            MoneyTrack
+            <span>·</span>
+            small steps toward mindful money habits
+        </footer>
+
+    </main>
+</div>
+
+<!-- PAGE-SPECIFIC SCRIPTS -->
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

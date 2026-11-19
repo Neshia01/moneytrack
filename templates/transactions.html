@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Transactions | MoneyTrack{% endblock %}
+{% block heading %}Transaction history{% endblock %}
+
+{% block content %}
+
+<section class="page-intro">
+    <div>
+        <h2>All transactions</h2>
+        <p>Kelola dan pantau seluruh aktivitas keuanganmu.</p>
+    </div>
+
+    <a class="button button-primary" href="{{ url_for('add_transaction') }}">
+        ＋ Add transaction
+    </a>
+</section>
+
+
+<section class="panel">
+
+    {% if transactions %}
+
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>TRANSAKSI</th>
+                        <th>KATEGORI</th>
+                        <th>TIPE</th>
+                        <th>TANGGAL</th>
+                        <th>JUMLAH</th>
+                        <th>AKSI</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in transactions %}
+                        <tr>
+
+                            <td class="transaction-name">
+                                {{ item.title }}
+                            </td>
+
+                            <td>
+                                <span class="category-tag">
+                                    {{ item.category }}
+                                </span>
+                            </td>
+
+                            <td>
+                                {% if item.type == "income" %}
+                                    <span class="type-tag type-income">
+                                        Pemasukan
+                                    </span>
+                                {% else %}
+                                    <span class="type-tag type-expense">
+                                        Pengeluaran
+                                    </span>
+                                {% endif %}
+                            </td>
+
+                            <td class="muted-cell">
+                                {{ item.date }}
+                            </td>
+
+                            <td class="{{ 'amount-income' if item.type == 'income' else 'amount-expense' }}">
+                                {{ format_currency(item.amount) }}
+                            </td>
+
+                            <td>
+                                <div class="action-cell">
+
+                                    <a
+                                        class="action-link"
+                                        href="{{ url_for('edit_transaction', id=item.id) }}"
+                                    >
+                                        Edit
+                                    </a>
+
+                                    <form
+                                        action="{{ url_for('delete_transaction', id=item.id) }}"
+                                        method="POST"
+                                        onsubmit="return confirm('Yakin ingin menghapus transaksi ini?');"
+                                    >
+                                        <button
+                                            type="submit"
+                                            class="action-delete"
+                                        >
+                                            Hapus
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% else %}
+
+        <div class="empty-state">
+            <div class="empty-icon">♡</div>
+
+            <h3>Belum ada transaksi</h3>
+
+            <p>
+                Riwayat transaksi masih kosong.
+                Yuk, catat transaksi pertamamu!
+            </p>
+
+            <a
+                class="button button-primary"
+                href="{{ url_for('add_transaction') }}"
+            >
+                Tambah transaksi
+            </a>
+        </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% set is_edit = transaction is defined and transaction %}
+
+{% block title %}
+    {{ "Edit" if is_edit else "Add" }} transaction | MoneyTrack
+{% endblock %}
+
+{% block heading %}
+    {{ "Edit transaction" if is_edit else "Add a transaction" }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-layout">
+
+    <section class="panel form-panel">
+
+        <div class="panel-heading">
+            <div>
+                <h3>
+                    {{ "Update your activity" if is_edit else "Let’s write it down" }}
+                </h3>
+
+                <p>Isi detail transaksi dengan benar, ya.</p>
+            </div>
+
+            <span class="panel-emoji">✎</span>
+        </div>
+
+
+        <form
+            method="POST"
+            action="{{ url_for('edit_transaction', id=transaction.id) if is_edit else url_for('add_transaction') }}"
+            class="transaction-form"
+        >
+
+            <!-- TRANSACTION NAME -->
+            <label for="title">Nama transaksi</label>
+
+            <input
+                id="title"
+                name="title"
+                type="text"
+                placeholder="Contoh: Makan siang"
+                value="{{ transaction.title if is_edit else '' }}"
+                maxlength="150"
+                required
+            >
+
+
+            <!-- AMOUNT AND TYPE -->
+            <div class="form-two">
+
+                <div>
+                    <label for="amount">Jumlah (Rp)</label>
+
+                    <input
+                        id="amount"
+                        name="amount"
+                        type="number"
+                        min="1"
+                        step="1"
+                        placeholder="Contoh: 25000"
+                        value="{{ transaction.amount if is_edit else '' }}"
+                        required
+                    >
+                </div>
+
+
+                <div>
+                    <label for="type">Jenis transaksi</label>
+
+                    <select id="type" name="type" required>
+
+                        <option
+                            value="expense"
+                            {% if not is_edit or transaction.type == "expense" %}selected{% endif %}
+                        >
+                            Pengeluaran
+                        </option>
+
+                        <option
+                            value="income"
+                            {% if is_edit and transaction.type == "income" %}selected{% endif %}
+                        >
+                            Pemasukan
+                        </option>
+
+                    </select>
+                </div>
+
+            </div>
+
+
+            <!-- CATEGORY AND DATE -->
+            <div class="form-two">
+
+                <div>
+                    <label for="category">Kategori</label>
+
+                    <select id="category" name="category" required>
+
+                        {% set category_options = [
+                            "Makanan",
+                            "Transportasi",
+                            "Pendidikan",
+                            "Belanja",
+                            "Hiburan",
+                            "Kesehatan",
+                            "Tagihan",
+                            "Gaji",
+                            "Lainnya"
+                        ] %}
+
+                        {% for category in category_options %}
+                            <option
+                                value="{{ category }}"
+                                {% if is_edit and transaction.category == category %}selected{% endif %}
+                            >
+                                {{ category }}
+                            </option>
+                        {% endfor %}
+
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="date">Tanggal</label>
+
+                    <input
+                        id="date"
+                        name="date"
+                        type="date"
+                        value="{{ transaction.date if is_edit else today }}"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+            <label for="description">
+                Catatan
+                <span class="optional">(opsional)</span>
+            </label>
+
+            <textarea
+                id="description"
+                name="description"
+                rows="3"
+                placeholder="Tambahkan catatan kecil..."
+                maxlength="500"
+            >{{ transaction.description if is_edit and transaction.description else '' }}</textarea>
+
+
+            <!-- FORM ACTIONS -->
+            <div class="form-actions">
+
+                <a
+                    class="button button-quiet"
+                    href="{{ url_for('transactions') }}"
+                >
+                    Batal
+                </a>
+
+                <button
+                    class="button button-primary"
+                    type="submit"
+                >
+                    {{ "Simpan perubahan" if is_edit else "Simpan transaksi" }}
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- REMINDER CARD -->
+    <aside class="form-tip">
+
+        <span class="tip-icon">♡</span>
+
+        <h3>A little reminder</h3>
+
+        <p>
+            Mencatat transaksi secara rutin membantu kamu
+            memahami kebiasaan keuangan dan membuat
+            keputusan yang lebih baik.
+        </p>
+
+    </aside>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,2022 @@
+
+/* =========================================
+   MONEYTRACK - MAIN STYLESHEET
+   ========================================= */
+
+/* 1. DESIGN TOKENS */
+
+:root {
+    --color-primary: #df9dbb;
+    --color-primary-dark: #b87596;
+    --color-primary-light: #f9eaf1;
+
+    --color-lavender: #b8a8df;
+    --color-mint: #a9d3c1;
+    --color-cream: #fff8f0;
+
+    --color-background: #fbf8fb;
+    --color-surface: #ffffff;
+
+    --color-text: #39323b;
+    --color-muted: #928894;
+
+    --color-border: #f0eaf0;
+    --color-success: #5e9c7c;
+    --color-danger: #c77d83;
+
+    --font-body: "DM Sans", sans-serif;
+    --font-heading: "Nunito", sans-serif;
+
+    --radius-small: 10px;
+    --radius-medium: 16px;
+    --radius-large: 20px;
+
+    --shadow-card: 0 5px 20px rgba(80, 50, 75, 0.035);
+}
+
+
+/* 2. RESET */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+
+/* 3. MAIN LAYOUT */
+
+.app-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-area {
+    flex: 1;
+    min-width: 0;
+    padding: 0 42px 25px;
+}
+
+.page-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-footer {
+    margin-top: 35px;
+    color: #b4aab4;
+    text-align: center;
+    font-size: 12px;
+}
+
+.page-footer span {
+    padding: 0 5px;
+    color: #d7b3c5;
+}
+
+
+/* 4. SIDEBAR */
+
+.sidebar {
+    display: flex;
+    flex: 0 0 250px;
+    flex-direction: column;
+
+    min-height: 100vh;
+    padding: 28px 19px 18px;
+
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin: 2px 0 48px 5px;
+
+    font-family: var(--font-heading);
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.brand small {
+    display: block;
+    margin-top: 1px;
+
+    color: #aa9eaa;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.brand-mark {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+
+    border-radius: 14px;
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.side-label {
+    margin-bottom: 12px;
+    padding: 0 12px;
+
+    color: #b4aab5;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.nav-menu {
+    display: grid;
+    gap: 7px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px;
+    border-radius: 12px;
+
+    color: #817783;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background: #fcf2f7;
+    color: var(--color-primary-dark);
+}
+
+.nav-link.active {
+    background: var(--color-primary-light);
+    color: #ae6c8d;
+}
+
+.nav-icon {
+    width: 21px;
+    text-align: center;
+    font-size: 19px;
+}
+
+.nav-disabled {
+    cursor: not-allowed;
+    color: #b5adb6;
+}
+
+.soon {
+    margin-left: auto;
+    padding: 4px 7px;
+
+    border-radius: 6px;
+    background: #f7f3f7;
+    color: #b6aab5;
+
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+
+/* 5. SIDEBAR CAT CARD */
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.cat-card {
+    position: relative;
+    overflow: hidden;
+
+    margin: 20px 0 16px;
+    padding: 18px 15px 15px;
+
+    border-radius: var(--radius-medium);
+    background: #fcf0f5;
+
+    line-height: 1.4;
+}
+
+.cat-card strong {
+    display: block;
+
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.cat-card p {
+    margin: 7px 0 0;
+
+    color: #9b8794;
+    font-size: 12px;
+}
+
+.cat-art {
+    position: relative;
+    height: 57px;
+    margin-bottom: 8px;
+}
+
+.cat-face {
+    position: absolute;
+    top: 12px;
+    left: 5px;
+
+    width: 45px;
+    height: 39px;
+
+    border: 1px solid #e8c9d8;
+    border-radius: 45% 45% 48% 48%;
+    background: white;
+}
+
+.cat-ear {
+    position: absolute;
+    top: 5px;
+
+    width: 18px;
+    height: 20px;
+
+    border: 1px solid #e8c9d8;
+    border-radius: 4px 10px 2px 4px;
+    background: white;
+
+    transform: rotate(35deg);
+}
+
+.cat-ear.left {
+    left: 8px;
+}
+
+.cat-ear.right {
+    left: 30px;
+    transform: rotate(55deg);
+}
+
+.cat-face i,
+.cat-face b {
+    position: absolute;
+    top: 15px;
+
+    width: 4px;
+    height: 5px;
+
+    border-radius: 50%;
+    background: #5d505a;
+}
+
+.cat-face i {
+    left: 12px;
+}
+
+.cat-face b {
+    right: 12px;
+}
+
+.cat-face em {
+    position: absolute;
+    top: 23px;
+    left: 21px;
+
+    width: 4px;
+    height: 3px;
+
+    border-radius: 50%;
+    background: #d990b1;
+}
+
+.sidebar-foot {
+    color: #b7acb7;
+    text-align: center;
+    font-size: 11px;
+}
+
+
+/* 6. TOPBAR */
+
+.topbar {
+    display: flex;
+    min-height: 115px;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.topbar-kicker {
+    margin-bottom: 6px;
+
+    color: #b59baa;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.topbar h1 {
+    margin: 0;
+
+    font-family: var(--font-heading);
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.top-add,
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 17px;
+    border: 0;
+    border-radius: var(--radius-small);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.top-add {
+    background: #f8e8ef;
+    color: #a76587;
+}
+
+.top-add span {
+    font-size: 19px;
+}
+
+.top-add:hover,
+.button-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.98);
+}
+
+
+/* 7. WELCOME PANEL */
+
+.welcome-panel {
+    position: relative;
+    display: flex;
+    min-height: 210px;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+
+    margin-bottom: 22px;
+    padding: 30px 35px;
+
+    border-radius: var(--radius-large);
+    background: #f8eaf1;
+}
+
+.eyebrow {
+    color: #b47796;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.welcome-panel h2 {
+    margin: 9px 0 7px;
+
+    font-family: var(--font-heading);
+    font-size: 31px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.welcome-panel p {
+    max-width: 410px;
+    margin-bottom: 17px;
+
+    color: #8f7e8a;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.button-light {
+    padding: 11px 16px;
+    background: white;
+    color: #a76587;
+}
+
+
+/* 8. WELCOME CAT */
+
+.welcome-cat {
+    position: relative;
+
+    display: grid;
+    width: 190px;
+    height: 145px;
+    place-items: center;
+}
+
+.big-cat {
+    position: relative;
+    width: 105px;
+    height: 100px;
+}
+
+.big-cat .head {
+    position: absolute;
+    top: 20px;
+    left: 12px;
+
+    width: 82px;
+    height: 75px;
+
+    border: 2px solid #e7c9d7;
+    border-radius: 48% 48% 45% 45%;
+    background: white;
+}
+
+.big-cat .ear {
+    position: absolute;
+    top: 8px;
+
+    z-index: 0;
+
+    width: 35px;
+    height: 39px;
+
+    border: 2px solid #e7c9d7;
+    background: white;
+}
+
+.big-cat .e1 {
+    left: 12px;
+    border-radius: 5px 18px 2px 8px;
+    transform: rotate(-22deg);
+}
+
+.big-cat .e2 {
+    right: 12px;
+    border-radius: 18px 5px 8px 2px;
+    transform: rotate(22deg);
+}
+
+.eye {
+    position: absolute;
+    top: 30px;
+
+    width: 6px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: #514750;
+}
+
+.eye1 {
+    left: 22px;
+}
+
+.eye2 {
+    right: 22px;
+}
+
+.nose {
+    position: absolute;
+    top: 43px;
+    left: 38px;
+
+    width: 7px;
+    height: 5px;
+
+    border-radius: 50%;
+    background: #d88eae;
+}
+
+.mouth {
+    position: absolute;
+    top: 48px;
+    left: 36px;
+
+    width: 11px;
+    height: 6px;
+
+    border-bottom: 1.5px solid #75616d;
+    border-radius: 50%;
+}
+
+.whisker {
+    position: absolute;
+    top: 48px;
+    width: 17px;
+
+    border-top: 1px solid #c7aab9;
+}
+
+.w1 {
+    left: 2px;
+}
+
+.w2 {
+    right: 2px;
+}
+
+.sparkle {
+    position: absolute;
+    color: #c68ca9;
+    font-size: 20px;
+}
+
+.s1 {
+    top: 10px;
+    right: 25px;
+}
+
+.s2 {
+    bottom: 10px;
+    left: 20px;
+}
+
+
+/* 9. FINANCIAL SUMMARY */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 17px;
+
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    min-width: 0;
+    padding: 21px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    background: white;
+
+    box-shadow: var(--shadow-card);
+}
+
+.stat-income {
+    border-top: 3px solid #e9a9c5;
+}
+
+.stat-expense {
+    border-top: 3px solid #b8a8df;
+}
+
+.stat-balance {
+    border-top: 3px solid #a9d3c1;
+}
+
+.stat-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #8f8490;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.stat-symbol {
+    color: #bd8ba5;
+    font-size: 22px;
+}
+
+.stat-value {
+    overflow-wrap: anywhere;
+
+    margin: 13px 0 5px;
+
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 2vw, 27px);
+    font-weight: 800;
+}
+
+.stat-note {
+    color: #b0a6b0;
+    font-size: 12px;
+}
+
+
+/* 10. PANELS AND CHARTS */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 18px;
+
+    margin-bottom: 20px;
+}
+
+.panel {
+    min-width: 0;
+    margin-bottom: 19px;
+    padding: 23px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    background: white;
+
+    box-shadow: var(--shadow-card);
+}
+
+.panel-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.panel-heading h3 {
+    margin: 0 0 4px;
+
+    font-family: var(--font-heading);
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.panel-heading p {
+    margin: 0;
+
+    color: #a79ca8;
+    font-size: 13px;
+}
+
+.panel-emoji {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+
+    border-radius: 11px;
+    background: #fbf0f5;
+    color: #b77d9b;
+    font-size: 19px;
+}
+
+.chart-box {
+    position: relative;
+    height: 270px;
+}
+
+.recent-panel {
+    margin-bottom: 0;
+}
+
+.text-link {
+    color: #b47796;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* 11. TABLES */
+
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+th {
+    padding: 13px 12px;
+    border-bottom: 1px solid var(--color-border);
+
+    color: #aaa0aa;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 16px 12px;
+    border-bottom: 1px solid #f6f2f6;
+
+    color: #6f6571;
+    font-size: 13px;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.transaction-name {
+    color: #514752;
+    font-weight: 700;
+}
+
+.category-tag,
+.type-tag {
+    display: inline-block;
+    padding: 6px 9px;
+
+    border-radius: 7px;
+    background: #f7f2f6;
+    color: #8e7c8b;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.type-income {
+    background: #edf7f1;
+    color: #5c9a78;
+}
+
+.type-expense {
+    background: #fbf0f1;
+    color: #bd777e;
+}
+
+.amount-income {
+    color: #559575;
+    font-weight: 700;
+}
+
+.amount-expense {
+    color: #c17a83;
+    font-weight: 700;
+}
+
+.muted-cell {
+    color: #a99eaa;
+}
+
+
+/* 12. EMPTY STATE */
+
+.empty-state {
+    padding: 42px 15px 35px;
+    text-align: center;
+}
+
+.empty-icon {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+
+    margin: 0 auto 13px;
+
+    border-radius: 15px;
+    background: #fbf0f5;
+    color: #bd82a0;
+    font-size: 25px;
+}
+
+.empty-state h3 {
+    margin-bottom: 6px;
+
+    font-family: var(--font-heading);
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.empty-state p {
+    max-width: 360px;
+    margin: 0 auto 18px;
+
+    color: #a59aa5;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* 13. BUTTONS */
+
+.button-primary {
+    background: #d995b4;
+    color: white;
+}
+
+.button-quiet {
+    background: #f6f2f6;
+    color: #8e828f;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.98);
+}
+
+
+/* 14. PAGE INTRO */
+
+.page-intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.page-intro h2 {
+    margin: 0 0 4px;
+
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.page-intro p {
+    margin: 0;
+    color: #a59aa5;
+    font-size: 13px;
+}
+
+
+/* 15. TRANSACTION ACTIONS */
+
+.action-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.action-cell form {
+    margin: 0;
+}
+
+.action-link,
+.action-delete {
+    padding: 0;
+    border: 0;
+    background: none;
+
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.action-link {
+    color: #a66e8c;
+}
+
+.action-delete {
+    color: #c27c83;
+}
+
+.action-link:hover,
+.action-delete:hover {
+    text-decoration: underline;
+}
+
+
+/* 16. TRANSACTION FORM */
+
+.form-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 250px;
+    align-items: start;
+    gap: 20px;
+}
+
+.form-panel {
+    max-width: 850px;
+}
+
+.transaction-form {
+    display: grid;
+    gap: 11px;
+}
+
+.transaction-form label {
+    margin-top: 5px;
+
+    color: #746976;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.optional {
+    color: #b4aab4;
+    font-weight: 400;
+}
+
+.transaction-form input,
+.transaction-form select,
+.transaction-form textarea {
+    width: 100%;
+    padding: 13px 14px;
+
+    border: 1px solid #eee7ee;
+    border-radius: 10px;
+    outline: none;
+
+    background: white;
+    color: var(--color-text);
+
+    font-family: var(--font-body);
+    font-size: 14px;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus,
+.transaction-form textarea:focus {
+    border-color: #d9a0ba;
+    box-shadow: 0 0 0 3px #f9edf2;
+}
+
+.transaction-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.form-two > div {
+    display: grid;
+    min-width: 0;
+    gap: 9px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.form-tip {
+    padding: 22px;
+
+    border-radius: 16px;
+    background: #f8edf3;
+    color: #806b7a;
+}
+
+.tip-icon {
+    color: #bb7f9e;
+    font-size: 25px;
+}
+
+.form-tip h3 {
+    margin: 12px 0 7px;
+
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.form-tip p {
+    margin: 0;
+
+    color: #9a8794;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* 17. FLASH MESSAGES */
+
+.flash-container {
+    margin-bottom: 20px;
+}
+
+.flash-message {
+    padding: 13px 16px;
+    border-radius: 10px;
+
+    background: #edf7f1;
+    color: #568d70;
+
+    font-size: 14px;
+}
+
+.flash-message.error {
+    background: #fbefef;
+    color: #b96f77;
+}
+
+
+/* 18. RESPONSIVE: TABLET */
+
+@media (max-width: 1000px) {
+
+    .main-area {
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+
+    .sidebar {
+        flex-basis: 220px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .chart-box {
+        height: 250px;
+    }
+
+    .form-layout {
+        grid-template-columns: minmax(0, 1fr) 210px;
+    }
+}
+
+
+/* 19. RESPONSIVE: MOBILE */
+
+@media (max-width: 700px) {
+
+    .app-shell {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        padding: 15px 17px;
+
+        border-right: 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .brand {
+        margin: 0 0 13px;
+    }
+
+    .side-label,
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .nav-menu {
+        display: flex;
+        gap: 5px;
+        overflow-x: auto;
+    }
+
+    .nav-link {
+        flex-shrink: 0;
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    .nav-disabled {
+        display: none;
+    }
+
+    .main-area {
+        padding: 0 15px 20px;
+    }
+
+    .topbar {
+        min-height: 90px;
+        gap: 10px;
+        margin-bottom: 19px;
+    }
+
+    .topbar h1 {
+        font-size: 22px;
+    }
+
+    .topbar-kicker {
+        font-size: 9px;
+    }
+
+    .top-add {
+        padding: 10px;
+        font-size: 0;
+    }
+
+    .top-add span {
+        font-size: 19px;
+    }
+
+    .welcome-panel {
+        min-height: 175px;
+        padding: 22px 20px;
+    }
+
+    .welcome-panel h2 {
+        max-width: 270px;
+        font-size: 23px;
+    }
+
+    .welcome-panel p {
+        max-width: 250px;
+        font-size: 13px;
+    }
+
+    .welcome-cat {
+        width: 90px;
+        flex-shrink: 0;
+        margin-right: -15px;
+        transform: scale(0.8);
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 11px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 23px;
+    }
+
+    .panel {
+        padding: 17px;
+    }
+
+    .panel-heading h3 {
+        font-size: 17px;
+    }
+
+    .panel-heading p {
+        font-size: 12px;
+    }
+
+    .chart-box {
+        height: 235px;
+    }
+
+    .dashboard-grid {
+        gap: 0;
+    }
+
+    .form-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .form-tip {
+        display: none;
+    }
+
+    .page-intro {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .form-two {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-wrap: wrap;
+    }
+
+    .page-footer {
+        font-size: 10px;
+    }
+}
+
+
+/* 20. ACCESSIBILITY */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(217, 160, 186, 0.45);
+    outline-offset: 2px;
+}
+
+.flash-message {
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.flash-message.flash-hidden {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+/* ================================
+   DASHBOARD - FONT LEBIH BESAR
+================================ */
+
+body {
+    font-size: 16px;
+}
+
+.sidebar {
+    font-size: 16px;
+}
+
+.nav-link {
+    font-size: 16px;
+    padding: 13px 16px;
+}
+
+.topbar h1 {
+    font-size: 28px;
+}
+
+.welcome-panel h2 {
+    font-size: 30px;
+}
+
+.welcome-panel p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.stat-card h3,
+.stat-card strong {
+    font-size: 25px;
+}
+
+.stat-card p,
+.stat-card span {
+    font-size: 15px;
+}
+
+.panel-heading h3 {
+    font-size: 21px;
+}
+
+.panel-heading p {
+    font-size: 15px;
+}
+
+table {
+    font-size: 15px;
+}
+
+table th {
+    font-size: 14px;
+}
+
+table td {
+    padding: 16px 12px;
+}
+
+/* ================================
+   RINCIAN PENGELUARAN
+================================ */
+
+.chart-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.chart-summary > div {
+    background: #FFF3F8;
+    padding: 18px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chart-summary span {
+    font-size: 14px;
+    color: #887582;
+}
+
+.chart-summary strong {
+    font-size: 21px;
+    color: #BD6590;
+}
+
+.category-breakdown {
+    margin-top: 25px;
+}
+
+.category-breakdown h4 {
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.category-item {
+    margin-bottom: 20px;
+}
+
+.category-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 9px;
+}
+
+.category-info span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.category-info strong {
+    font-size: 16px;
+}
+
+.category-progress {
+    width: 100%;
+    height: 10px;
+    background: #F3E8EF;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.category-progress-fill {
+    height: 100%;
+    background: #E88BB5;
+    border-radius: 20px;
+}
+
+.category-percentage {
+    display: block;
+    font-size: 13px;
+    color: #927F8B;
+    margin-top: 7px;
+}
+
+@media (max-width: 600px) {
+    .chart-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .category-info strong {
+        font-size: 14px;
+    }
+}
+
+
+/* ==================================
+   MONEYTRACK DASHBOARD IMPROVEMENT
+================================== */
+
+/* Ukuran tulisan umum */
+body {
+    font-size: 16px;
+}
+
+.panel-heading h3 {
+    font-size: 21px;
+}
+
+.panel-heading p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Area grafik */
+.chart-box {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    margin-top: 18px;
+}
+
+.category-chart-box {
+    height: 300px;
+}
+
+/* Ringkasan pengeluaran */
+.chart-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.chart-summary > div {
+    background: #fff3f8;
+    padding: 18px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.chart-summary span {
+    font-size: 15px;
+    color: #887582;
+}
+
+.chart-summary strong {
+    font-size: 21px;
+    color: #bd6590;
+}
+
+/* Rincian kategori */
+.category-breakdown {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #f1e7ed;
+}
+
+.category-breakdown h4 {
+    font-size: 20px;
+    margin: 0 0 22px;
+}
+
+.category-item {
+    margin-bottom: 23px;
+}
+
+.category-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 9px;
+}
+
+.category-info span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.category-info strong {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+/* Progress bar */
+.category-progress {
+    display: block;
+    width: 100%;
+    height: 11px;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+    background: #f3e8ef;
+}
+
+.category-progress::-webkit-progress-bar {
+    background: #f3e8ef;
+    border-radius: 20px;
+}
+
+.category-progress::-webkit-progress-value {
+    background: #e88bb5;
+    border-radius: 20px;
+}
+
+.category-progress::-moz-progress-bar {
+    background: #e88bb5;
+    border-radius: 20px;
+}
+
+.category-percentage {
+    display: block;
+    font-size: 14px;
+    color: #927f8b;
+    margin-top: 8px;
+}
+
+.category-empty {
+    font-size: 15px;
+    color: #927f8b;
+}
+
+/* Tabel transaksi */
+.recent-panel {
+    margin-top: 25px;
+}
+
+.recent-panel table {
+    font-size: 15px;
+}
+
+.recent-panel th {
+    font-size: 14px;
+}
+
+.recent-panel td {
+    padding: 17px 12px;
+}
+
+/* Responsif */
+@media (max-width: 700px) {
+    .chart-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-box {
+        height: 250px;
+    }
+
+    .category-chart-box {
+        height: 270px;
+    }
+
+    .category-info span,
+    .category-info strong {
+        font-size: 14px;
+    }
+}
+
+/* Layout dashboard baru */
+.dashboard-grid {
+    align-items: start;
+}
+
+.chart-panel {
+    align-self: start;
+    height: fit-content;
+}
+
+.category-breakdown-panel {
+    margin-top: 24px;
+    width: 100%;
+}
+
+.category-breakdown-panel .category-item {
+    max-width: 100%;
+    margin-bottom: 22px;
+}
+
+.category-breakdown-panel .category-item:last-child {
+    margin-bottom: 0;
+}
+
+.chart-box {
+    height: 280px;
+}
+
+.category-chart-box {
+    height: 300px;
+}
+
+
+/* =========================================
+   MONEYTRACK - DASHBOARD LAYOUT UPDATE
+========================================= */
+
+/* Grafik berdampingan dengan tinggi masing-masing */
+.dashboard-grid {
+    align-items: start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.chart-panel {
+    align-self: start;
+    height: auto;
+    min-width: 0;
+}
+
+/* Ukuran area grafik */
+.chart-box {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    margin-top: 18px;
+}
+
+.category-chart-box {
+    height: 300px;
+}
+
+/* Ringkasan di bawah grafik bulanan */
+.chart-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.chart-summary > div {
+    background: #fff3f8;
+    padding: 17px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.chart-summary span {
+    font-size: 14px;
+    color: #887582;
+}
+
+.chart-summary strong {
+    font-size: 20px;
+    color: #bd6590;
+}
+
+/* Panel rincian kategori */
+.category-breakdown-panel {
+    width: 100%;
+    margin-top: 24px;
+    padding: 26px;
+}
+
+.category-breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 35px;
+    row-gap: 24px;
+    margin-top: 24px;
+}
+
+.category-item {
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+.category-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.category-info span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.category-info strong {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+/* Progress bar */
+.category-progress {
+    display: block;
+    width: 100%;
+    height: 11px;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+    background: #f3e8ef;
+}
+
+.category-progress::-webkit-progress-bar {
+    background: #f3e8ef;
+    border-radius: 20px;
+}
+
+.category-progress::-webkit-progress-value {
+    background: #e88bb5;
+    border-radius: 20px;
+}
+
+.category-progress::-moz-progress-bar {
+    background: #e88bb5;
+    border-radius: 20px;
+}
+
+.category-percentage {
+    display: block;
+    font-size: 14px;
+    color: #927f8b;
+    margin-top: 8px;
+}
+
+/* Total pengeluaran */
+.category-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #f1e7ed;
+    margin-top: 26px;
+    padding-top: 20px;
+}
+
+.category-total span {
+    font-size: 15px;
+    color: #887582;
+}
+
+.category-total strong {
+    font-size: 20px;
+    color: #bd6590;
+}
+
+.category-empty {
+    padding: 25px 0;
+    color: #927f8b;
+    font-size: 15px;
+}
+
+/* Aktivitas transaksi */
+.recent-panel {
+    margin-top: 24px;
+}
+
+.recent-panel th {
+    font-size: 14px;
+}
+
+.recent-panel td {
+    font-size: 15px;
+    padding: 17px 12px;
+}
+
+/* Ukuran judul */
+.panel-heading h3 {
+    font-size: 21px;
+}
+
+.panel-heading p {
+    font-size: 15px;
+}
+
+/* Tampilan tablet */
+@media (max-width: 900px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-breakdown-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+
+    .chart-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-box {
+        height: 250px;
+    }
+
+    .category-chart-box {
+        height: 270px;
+    }
+
+    .category-breakdown-panel {
+        padding: 20px;
+    }
+
+    .category-info span,
+    .category-info strong {
+        font-size: 14px;
+    }
+
+    .category-total strong {
+        font-size: 17px;
+    }
+
+}
+
+/* SPENDING INSIGHT */
+
+.spending-insight {
+    margin-top: 22px;
+    padding: 19px 21px;
+    background: #fff3f8;
+    border: 1px solid #f8e3ed;
+    border-radius: 16px;
+}
+
+.insight-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #bd6590;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.insight-icon {
+    font-size: 18px;
+}
+
+.spending-insight h4 {
+    color: #594454;
+    font-size: 17px;
+    margin: 0 0 8px;
+}
+
+.spending-insight p {
+    color: #887582;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.spending-insight p strong {
+    color: #bd6590;
+}
+
+/* ======================================
+   DASHBOARD - BALANCED CHART LAYOUT
+====================================== */
+
+/* Kedua kartu dibuat sama tinggi */
+.dashboard-grid {
+    align-items: stretch !important;
+    gap: 24px;
+}
+
+.chart-panel {
+    align-self: stretch !important;
+    height: 100%;
+    min-height: 590px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Judul grafik */
+.chart-panel .panel-heading h3 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.chart-panel .panel-heading p {
+    font-size: 17px;
+}
+
+/* Area grafik */
+.chart-box {
+    height: 310px;
+    margin-top: 22px;
+}
+
+.category-chart-box {
+    height: 310px;
+}
+
+/* Ringkasan kiri berada di bagian bawah */
+.chart-summary {
+    margin-top: auto;
+    padding-top: 22px;
+    gap: 14px;
+}
+
+.chart-summary > div {
+    padding: 21px;
+}
+
+.chart-summary span {
+    font-size: 16px;
+}
+
+.chart-summary strong {
+    font-size: 25px;
+}
+
+/* Insight kanan berada di bagian bawah */
+.spending-insight {
+    margin-top: auto;
+    padding: 23px;
+    min-height: 145px;
+}
+
+.insight-heading {
+    font-size: 17px;
+}
+
+.spending-insight h4 {
+    font-size: 21px;
+    line-height: 1.5;
+}
+
+.spending-insight p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Legenda dan keterangan grafik */
+.chart-panel canvas {
+    max-width: 100%;
+}
+
+/* Panel rincian kategori */
+.category-breakdown-panel .panel-heading h3 {
+    font-size: 24px;
+}
+
+.category-info span,
+.category-info strong {
+    font-size: 18px;
+}
+
+.category-percentage {
+    font-size: 16px;
+}
+
+/* Tabel transaksi */
+.recent-panel .panel-heading h3 {
+    font-size: 24px;
+}
+
+.recent-panel td {
+    font-size: 17px;
+}
+
+.recent-panel th {
+    font-size: 15px;
+}
+
+/* Responsif */
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-panel {
+        min-height: auto;
+    }
+
+    .chart-summary,
+    .spending-insight {
+        margin-top: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .chart-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-panel .panel-heading h3 {
+        font-size: 22px;
+    }
+
+    .chart-box,
+    .category-chart-box {
+        height: 270px;
+    }
+}
